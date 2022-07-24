@@ -7,8 +7,10 @@ function App({setAlert, setSongs}) {
   const { guildId } = useParams();
 
   const [queryInput, setQueryInput] = useState('');
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const search = async (e, query) => {
+    setButtonDisabled(true);
 		setAlert({ type: 'primary', title: `Searching for: ${query}`, loading: true });
 		e.preventDefault();
 		try {
@@ -16,7 +18,7 @@ function App({setAlert, setSongs}) {
 			if(searchResponse.success) {
         const track = searchResponse.success.data.search.tracks[0];
         if (!track) return setAlert({ type: 'danger', title: `No Result for: ${query}`, loading: false });
-				setSongs([track]);
+				setSongs({tracks: [track], action: 'success'});
 				setAlert({ type: 'primary', title: `Adding: ${track.title}`, loading: true });
 
         const playResponse = await api.guildTrackAdd(guildId, track.identifier);
@@ -24,8 +26,10 @@ function App({setAlert, setSongs}) {
           setAlert({ type: 'success', title: playResponse.success.data.message, loading: false });
         }
 			}
+      setButtonDisabled(false);
 		} catch (error) {
 			setAlert({ type: 'danger', title: `Error: ${error?.response?.data?.error?.message || 'Unknown Error'}`, loading: false });
+      setButtonDisabled(false);
 		}
 	}
   
@@ -39,7 +43,7 @@ function App({setAlert, setSongs}) {
         onInput={(e) => setQueryInput(e.target.value)}
         required={true} />
       <div className="input-group-append">
-        <button id="btnSearch" className="btn btn-primary btn-sm" type="submit">
+        <button id="btnSearch" className="btn btn-primary btn-sm" type="submit" disabled={buttonDisabled}>
           <i className="fa-solid fa-play"></i>
         </button>
       </div>

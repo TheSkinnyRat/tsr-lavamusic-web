@@ -21,7 +21,11 @@ function App() {
 		loading: false
 	};
 	const [alert, setAlert] = useState(initialAlert);
-  const [songs, setSongs] = useState([]);
+  const initialSongs = {
+		tracks: [],
+		action: '',
+	};
+  const [songs, setSongs] = useState(initialSongs);
   
   return (
     <div id='wrapper' className='bg-light'>
@@ -43,7 +47,15 @@ function App() {
                   <div className="card">
                     <div className="card-body">
                       <span className='font-weight-bold'>Search Result</span>
-                      {(songs.length !== 0) ? songs.map(song => <Song key={song.identifier} song={song} setAlert={setAlert} />) : <ImgMusic />}
+                      {(songs.tracks.length !== 0) ? 
+                        songs.tracks.map(song => 
+                          <Song 
+                            key={songs.action+song.identifier}
+                            song={song} setAlert={setAlert}
+                            action={songs.action} />
+                        )
+                      :
+                        <ImgMusic />}
                     </div>
                   </div>
                 </div>
