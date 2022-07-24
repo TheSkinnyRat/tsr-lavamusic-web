@@ -7,7 +7,7 @@ function App() {
 		  <div className="">
 		    <Link className="navbar-brand d-flex mr-auto text-primary" to="/">
 		      <span className="font-weight-bold mx-1">
-						<i className="fa-solid fa-circle-play"></i> TSR Music Bot「BETA」
+						<i className="fa-solid fa-circle-play"></i>「 TSR <span className='d-none d-sm-inline'>Music Bot</span> 」
 		      </span>
 		    </Link>
 		  </div>
