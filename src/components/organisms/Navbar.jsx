@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import packages from '../../../package.json';
 
 function App() {
   
@@ -15,6 +16,9 @@ function App() {
 		  <div className="topbar-divider d-none d-lg-block"></div>
 
 		  <div className="navbar-text">
+				<small className='bg-gray-600 text-white px-1 rounded'>
+					{`v${packages.version}`}
+				</small>
 		    {/* <a href="pages/pesanan.html" className="btn btn-primary btn-sm text-white">
           <i className="fas fa-concierge-bell fa-lg"></i>
           <div className="d-none d-sm-inline px-1">Pesanan</div>
