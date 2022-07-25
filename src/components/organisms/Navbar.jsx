@@ -33,6 +33,11 @@ function App() {
 		  <div className="collapse navbar-collapse" id="navToggler1">
 		    <hr className="d-lg-none m-0" />
 		    <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+					<li className="nav-item p-1 p-lg-0">
+		        <Link to="/guild" className="btn btn-link text-decoration-none mr-1 btn-sm">
+							<i className="fa-solid fa-right-to-bracket"></i> Guild
+		        </Link>
+		      </li>
           <li className="nav-item p-1 p-lg-0">
 		        <Link to="/" className="btn btn-link text-decoration-none mr-1 btn-sm">
 							<i className="fa-solid fa-house"></i> Home
