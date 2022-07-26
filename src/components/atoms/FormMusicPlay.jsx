@@ -18,7 +18,7 @@ function App({setAlert, setSongs}) {
 			if(searchResponse.success) {
         const track = searchResponse.success.data.search.tracks[0];
         if (!track) return setAlert({ type: 'danger', title: `No Result for: ${query}`, loading: false });
-				setSongs({tracks: [track], action: 'success'});
+				setSongs({tracks: [track], action: 'success', type: 'play'});
 				setAlert({ type: 'primary', title: `Adding: ${track.title}`, loading: true });
 
         const playResponse = await api.guildTrackAdd(guildId, track.identifier);

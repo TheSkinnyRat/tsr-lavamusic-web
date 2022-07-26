@@ -14,9 +14,15 @@ const guildTrackAdd = async (guildId, identifier) => {
   return response.data;
 }
 
+const guildTrackRecommended = async (guildId) => {
+  const response = await axios.get(ENDPOINTS.GUILD_TRACK_RECOMMENDED_GET(guildId));
+  return response.data;
+}
+
 const api = {
   musicSearch,
   guildTrackAdd,
+  guildTrackRecommended,
 }
 
 export default api;
