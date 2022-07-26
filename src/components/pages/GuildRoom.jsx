@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../../styles/App.css';
 import Alert from '../atoms/Alert';
-import ImgMusic from '../atoms/ImgMusic';
-import Song from '../atoms/Song';
+import CardMusic from '../organisms/CardMusic';
 import CardFormMusic from '../organisms/CardFormMusic';
 import CardMusicNowPlaying from '../organisms/CardMusicNowPlaying';
 
@@ -21,6 +20,7 @@ function App() {
   const initialSongs = {
 		tracks: [],
 		action: '',
+    type: '',
 	};
   const [songs, setSongs] = useState(initialSongs);
   
@@ -36,20 +36,12 @@ function App() {
           </div>
           <div className='col-12 col-md-8 order-1 order-md-2'>
             <CardFormMusic setAlert={setAlert} setSongs={setSongs} />
-            <div className="card">
-              <div className="card-body">
-                <span className='font-weight-bold'>Search Result</span>
-                {(songs.tracks.length !== 0) ? 
-                  songs.tracks.map(song => 
-                    <Song 
-                      key={songs.action+song.identifier}
-                      song={song} setAlert={setAlert}
-                      action={songs.action} />
-                  )
-                :
-                  <ImgMusic />}
-              </div>
-            </div>
+            <CardMusic
+              prop={{
+                songs: songs,
+              }}
+              setAlert={setAlert}
+              setSongs={setSongs} />
           </div>
         </div>
       </div>

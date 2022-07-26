@@ -15,7 +15,7 @@ function App({setAlert, setSongs}) {
 			if(response.success) {
         const tracks = response.success.data.search.tracks;
         if (!tracks[0]) return setAlert({ type: 'danger', title: `No Result for: ${query}`, loading: false });
-        setSongs({tracks: tracks.slice(0, 10), action: 'add'});
+        setSongs({tracks: tracks.slice(0, 10), action: 'add', type: 'search'});
 				setAlert({ type: 'success', title: `Result for: ${query}`, loading: false });
         setButtonDisabled(false);
 			}
