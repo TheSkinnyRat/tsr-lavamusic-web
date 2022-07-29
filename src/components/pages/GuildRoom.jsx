@@ -32,7 +32,7 @@ function App() {
             <Alert alert={alert} />
           </div>
           <div className='col-12 col-md-4 order-2 order-md-1 mt-2 mt-md-0'>
-            <CardMusicNowPlaying />
+            <CardMusicNowPlaying setAlert={setAlert} />
           </div>
           <div className='col-12 col-md-8 order-1 order-md-2'>
             <CardFormMusic setAlert={setAlert} setSongs={setSongs} />
