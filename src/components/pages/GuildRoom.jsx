@@ -34,7 +34,12 @@ function App() {
           </div>
           <div className='col-12 col-md-4 order-2 order-md-1 mt-2 mt-md-0'>
             <CardMusicNowPlaying setAlert={setAlert} />
-            <CardMusicQueue />
+            <CardMusicQueue
+              prop={{
+                songs: songs,
+              }}
+              setAlert={setAlert}
+              setSongs={setSongs} />
           </div>
           <div className='col-12 col-md-8 order-1 order-md-2'>
             <CardFormMusic setAlert={setAlert} setSongs={setSongs} />

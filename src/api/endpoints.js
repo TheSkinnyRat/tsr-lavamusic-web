@@ -3,6 +3,7 @@ import CONFIG from './config';
 const ENDPOINTS = {
   MUSIC_SEARCH: (query) => `${CONFIG.BASE_URL}/music/search?query=${query}`,
   GUILD_TRACK: (guildId) => `${CONFIG.BASE_URL}/guild/${guildId}/track`,
+  GUILD_TRACK_DELETE: (guildId, position) => `${CONFIG.BASE_URL}/guild/${guildId}/track/${position}`,
   GUILD_TRACK_RECOMMENDED: (guildId) => `${CONFIG.BASE_URL}/guild/${guildId}/track/recommended`,
   GUILD_PAUSE: (guildId) => `${CONFIG.BASE_URL}/guild/${guildId}/pause`,
   GUILD_UNPAUSE: (guildId) => `${CONFIG.BASE_URL}/guild/${guildId}/unpause`,

@@ -17,7 +17,11 @@ function App({setAlert, setSongs}) {
 			const searchResponse = await api.musicSearch(query);
 			if(searchResponse.success) {
         const track = searchResponse.success.data.search.tracks[0];
-        if (!track) return setAlert({ type: 'danger', title: `No Result for: ${query}`, loading: false });
+        if (!track) {
+          setAlert({ type: 'danger', title: `No track found: ${query}`, loading: false });
+          setButtonDisabled(false);
+          return;
+        }
 				setSongs({tracks: [track], action: 'success', type: 'play'});
 				setAlert({ type: 'primary', title: `Adding: ${track.title}`, loading: true });
 
