@@ -14,6 +14,11 @@ const guildTrackAdd = async (guildId, identifier) => {
   return response.data;
 }
 
+const guildTrackDelete = async (guildId, position) => {
+  const response = await axios.delete(ENDPOINTS.GUILD_TRACK_DELETE(guildId, position));
+  return response.data;
+}
+
 const guildTrackRecommended = async (guildId) => {
   const response = await axios.get(ENDPOINTS.GUILD_TRACK_RECOMMENDED(guildId));
   return response.data;
@@ -57,6 +62,7 @@ const guildShuffle = async (guildId) => {
 const api = {
   musicSearch,
   guildTrackAdd,
+  guildTrackDelete,
   guildTrackRecommended,
   guildPause,
   guildUnpause,

@@ -4,7 +4,7 @@ import { convertTime } from '../../utils/convert';
 import ImgMusic from './ImgMusic';
 import api from '../../api';
 
-function App({song, setAlert, action}) {
+function App({song, position, action, setAlert}) {
 
   const { guildId } = useParams();
 
@@ -17,8 +17,8 @@ function App({song, setAlert, action}) {
   }
   const ButtonRemove = () => {
     return (
-      <button className="btn btn-danger btn-sm">
-        <i className="fa-solid fa-minus"></i>
+      <button className="btn btn-link btn-sm" onClick={() => removeSong(position)}>
+        <i className="fa-solid fa-circle-minus"></i>
       </button>
     );
   }
@@ -58,6 +58,21 @@ function App({song, setAlert, action}) {
 		} catch (error) {
 			setAlert({ type: 'danger', title: `Error: ${error?.response?.data?.error?.message || 'Unknown Error'}`, loading: false });
       setButtonAction(<ButtonAdd />);
+		}
+	}
+
+  const removeSong = async (position) => {
+    setButtonAction(<ButtonLoading />);
+    setAlert({ type: 'primary', title: `Removing from queue: ${song.title}`, loading: true });
+		try {
+      const response = await api.guildTrackDelete(guildId, position);
+			if(response.success) {
+				setAlert({ type: 'success', title: response.success.data.message, loading: false });
+        setButtonAction(<ButtonSuccess />);
+			}
+		} catch (error) {
+			setAlert({ type: 'danger', title: `Error: ${error?.response?.data?.error?.message || 'Unknown Error'}`, loading: false });
+      setButtonAction(<ButtonRemove />);
 		}
 	}
 
