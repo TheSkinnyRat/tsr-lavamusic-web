@@ -19,8 +19,8 @@ const guildTrackDelete = async (guildId, position) => {
   return response.data;
 }
 
-const guildTrackRecommended = async (guildId) => {
-  const response = await axios.get(ENDPOINTS.GUILD_TRACK_RECOMMENDED(guildId));
+const guildTrackRecommended = async (guildId, identifier) => {
+  const response = await axios.get(ENDPOINTS.GUILD_TRACK_RECOMMENDED(guildId, identifier));
   return response.data;
 }
 

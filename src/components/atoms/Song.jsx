@@ -4,7 +4,7 @@ import { convertTime } from '../../utils/convert';
 import ImgMusic from './ImgMusic';
 import api from '../../api';
 
-function App({song, position, action, setAlert}) {
+function App({song, position, setAlert, setSongs, action}) {
 
   const { guildId } = useParams();
 
@@ -76,6 +76,23 @@ function App({song, position, action, setAlert}) {
 		}
 	}
 
+  const getRecommendedSongs = async (e, identifier) => {
+		e.preventDefault();
+		setAlert({ type: 'primary', title: `Getting recommended songs for identifier: ${identifier}`, loading: true });
+		try {
+			const response = await api.guildTrackRecommended(guildId, identifier);
+			if(response.success) {
+        const tracks = response.success.data.search.tracks;
+        if (!tracks[0]) return setAlert({ type: 'danger', title: `No recommended track found`, loading: false });
+        setSongs({tracks: tracks, action: 'add', type: 'recommended'});
+				setAlert({ type: 'success', title: `Successfully get recommended songs for identifier: ${identifier}`, loading: false });
+			}
+		} catch (error) {
+			if (error?.response?.status === 404) setSongs({tracks: [], error: 'recommended'});
+			setAlert({ type: 'danger', title: `Error: ${error?.response?.data?.error?.message || 'Unknown Error'}`, loading: false });
+		}
+	}
+
   if(!song){
     return <ImgMusic />;
   }
@@ -86,9 +103,15 @@ function App({song, position, action, setAlert}) {
         <div className="col-4 col-sm-2 my-auto p-0 m-0">
           <img src={song.thumbnail} alt="" className="rounded border img-fluid mx-auto d-block w-75 h-75"/>
         </div>
-        <div className="col-9 col-sm-8">
-          <div className='mt-2 font-weight-bold d-block text-truncate'>{song.title}</div>
-          <small className='text-muted'>{song.author} ({convertTime(song.duration)})</small>
+        <div className="col-9 col-sm-8 my-auto">
+          <div className='mt-2 mt-sm-0 font-weight-bold d-block text-truncate'>{song.title}</div>
+          <div className='text-muted text-truncate small'>{song.author} ({convertTime(song.duration)})</div>
+          <button className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" onClick={(e) => getRecommendedSongs(e, song.identifier)} >
+            <i className="fa-solid fa-bars-staggered"></i>
+          </button>
+          <a className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" href={song.uri} target='blank'>
+            <i className="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
         </div>
         <div className="col-3 col-sm-2 text-right my-auto">
           {buttonAction}

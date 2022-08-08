@@ -66,7 +66,9 @@ function App({prop, setAlert, setSongs}) {
 					prop.songs.tracks.map(song => 
 						<Song 
 							key={prop.songs.action+song.identifier}
-							song={song} setAlert={setAlert}
+							song={song}
+							setAlert={setAlert}
+							setSongs={setSongs}
 							action={prop.songs.action} />
 					)
 				:

@@ -4,7 +4,7 @@ import socket from '../../api/socket';
 // import api from '../../api';
 import Song from '../atoms/Song';
 
-function App({setAlert}) {
+function App({setAlert, setSongs}) {
 	const queueUpdateSocket = socket.queue;
   const { guildId } = useParams();
 
@@ -18,11 +18,11 @@ function App({setAlert}) {
 		tracks: [],
 		action: '',
 	};
-	const [songs, setSongs] = useState(initialSongs);
+	const [songs, setQueueSongs] = useState(initialSongs);
 
 	useEffect(() => {
     queueUpdateSocket.on('player:queueUpdate:success', (tracks) => {
-			setSongs({tracks: tracks.queue, action: 'remove'});
+			setQueueSongs({tracks: tracks.queue, action: 'remove'});
     });
 
     queueUpdateSocket.on('player:queueUpdate:error', (error) => {
@@ -47,8 +47,9 @@ function App({setAlert}) {
 							key={songs.action+song.identifier+index}
 							song={song}
 							position={index}
-							action={songs.action}
-							setAlert={setAlert} />
+							setAlert={setAlert}
+							setSongs={setSongs}
+							action={songs.action} />
 					)
 				:
 					<TextEmpty />}
