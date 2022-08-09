@@ -20,6 +20,10 @@ function App() {
         </div>
         <Footer />
       </div>
+
+      <a className="scroll-to-top rounded" href="#wrapper" style={{display: 'none'}} >
+        <i className="fas fa-angle-up"></i>
+      </a>
     </div>
   );
 }
