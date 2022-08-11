@@ -21,7 +21,7 @@ function App({setAlert}) {
 	useEffect(() => {
     playerUpdateSocket.on('player:playerUpdate:success', (player) => {
 			setPlayer(player);
-			if (player?.track) {
+			if (player?.track && player?.track?.identifier) {
 				setButtonPlayPause(player.paused ? 'play' : 'pause');
 				setButtonLoop(player.repeat);
 				setButtonDisabled(false);

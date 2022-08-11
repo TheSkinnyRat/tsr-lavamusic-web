@@ -7,6 +7,8 @@ import "./vendor/sb-admin-2/css/sb-admin-2.min.css";
 import "./vendor/sb-admin-2/js/sb-admin-2.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './styles/Theme.css';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/shift-away.css';
 import Index from './components/pages/Index';
 import NotFound from './components/pages/NotFound';
 import App from './components/pages/App';
