@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { convertTime } from '../../utils/convert';
 import ImgMusic from './ImgMusic';
 import api from '../../api';
+import Tippy from '@tippyjs/react';
 
 function App({song, position, setAlert, setSongs, action}) {
 
@@ -10,16 +11,20 @@ function App({song, position, setAlert, setSongs, action}) {
 
   const ButtonAdd = () => {
     return (
-      <button className="btn btn-primary btn-sm" onClick={() => addSong(song.identifier)}>
-        <i className="fa-solid fa-plus"></i>
-      </button>
+      <Tippy content="Add to queue" animation='shift-away' arrow={false}>
+        <button className="btn btn-primary btn-sm rounded-circle" onClick={() => addSong(song.identifier)}>
+          <i className="fa-solid fa-plus"></i>
+        </button>
+      </Tippy>
     );
   }
   const ButtonRemove = () => {
     return (
-      <button className="btn btn-link btn-sm" onClick={() => removeSong(position)}>
-        <i className="fa-solid fa-circle-minus"></i>
-      </button>
+      <Tippy content="Remove from queue" animation='shift-away' arrow={false}>
+        <button className="btn btn-link btn-sm" onClick={() => removeSong(position)}>
+          <i className="fa-solid fa-circle-minus"></i>
+        </button>
+      </Tippy>
     );
   }
   const ButtonLoading = () => {
@@ -106,12 +111,16 @@ function App({song, position, setAlert, setSongs, action}) {
         <div className="col-9 col-sm-8 my-auto">
           <div className='mt-2 mt-sm-0 font-weight-bold d-block text-truncate'>{song.title}</div>
           <div className='text-muted text-truncate small'>{song.author} ({convertTime(song.duration)})</div>
-          <button className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" onClick={(e) => getRecommendedSongs(e, song.identifier)} >
-            <i className="fa-solid fa-bars-staggered"></i>
-          </button>
-          <a className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" href={song.uri} target='blank'>
-            <i className="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+          <Tippy content="Get recommended based on this track" animation='shift-away' arrow={false} maxWidth={150}>
+            <button className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" onClick={(e) => getRecommendedSongs(e, song.identifier)} >
+              <i className="fa-solid fa-bars-staggered"></i>
+            </button>
+          </Tippy>
+          <Tippy content="Open youtube" animation='shift-away' arrow={false}>
+            <a className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" href={song.uri} target='blank'>
+              <i className="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </Tippy>
         </div>
         <div className="col-3 col-sm-2 text-right my-auto">
           {buttonAction}
