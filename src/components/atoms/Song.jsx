@@ -83,6 +83,7 @@ function App({song, position, setAlert, setSongs, action}) {
 
   const getRecommendedSongs = async (e, identifier) => {
 		e.preventDefault();
+    window.scrollTo({top: 0, left: 0, behavior: "smooth"})
 		setAlert({ type: 'primary', title: `Getting recommended songs for identifier: ${identifier}`, loading: true });
 		try {
 			const response = await api.guildTrackRecommended(guildId, identifier);
@@ -111,7 +112,7 @@ function App({song, position, setAlert, setSongs, action}) {
         <div className="col-9 col-sm-8 my-auto">
           <div className='mt-2 mt-sm-0 font-weight-bold d-block text-truncate'>{song.title}</div>
           <div className='text-muted text-truncate small'>{song.author} ({convertTime(song.duration)})</div>
-          <Tippy content="Get recommended based on this track" animation='shift-away' arrow={false} maxWidth={150}>
+          <Tippy content={<div className='text-center'>Get recommended based on this track</div>} animation='shift-away' arrow={false} maxWidth={150}>
             <button className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" onClick={(e) => getRecommendedSongs(e, song.identifier)} >
               <i className="fa-solid fa-bars-staggered"></i>
             </button>
