@@ -13,7 +13,7 @@ function App() {
   });
 
   const initialAlert = {
-		type: 'secondary',
+		type: 'light',
 		title: 'Sunyi dan sepi, di ruang hampa~',
 		loading: false
 	};

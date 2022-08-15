@@ -11,9 +11,9 @@ function App() {
   });
   
   return (
-    <div id='wrapper' className='bg-light'>
+    <div id='wrapper' className='bg-secondary'>
       <div style={{minHeight: '90vh'}} />
-      <div id="content-wrapper" className="d-flex flex-column overflow-hidden">
+      <div id="content-wrapper" className="d-flex flex-column bg-secondary overflow-hidden">
         <div id="content" className='mt-2 mb-4'>
           <Navbar />
           <Outlet />

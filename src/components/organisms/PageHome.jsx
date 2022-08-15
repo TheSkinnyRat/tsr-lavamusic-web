@@ -16,7 +16,7 @@ function App() {
 						<p className="h3 text-md-left">
 							<span id="headerTyped" className="text-primary"></span>
 						</p>
-						<p className="lead text-muted text-md-left">
+						<p className="lead text-gray-300 text-md-left">
 							Sunyi dan sepi di ruang hampa,<br />
 							Masalah datang dan pergi sudah biasa,<br />
 							Haaa, sendiri lagi~~<br />

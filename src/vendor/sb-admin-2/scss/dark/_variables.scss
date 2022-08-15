@@ -1,0 +1,27 @@
+// Override default variables here
+// Do not edit any of the files in /vendor/bootstrap/scss/!
+
+// Color Variables
+// Bootstrap Color Overrides
+$theme-colors: (
+  "primary": #4ED5DE,
+);
+$body-bg: $gray-600;
+$border-color: rgba($black, .125);
+$nav-pills-link-active-color: $gray-900;
+
+// input
+$input-bg: $gray-800;
+$input-disabled-bg: $gray-900;
+$input-color: $gray-100;
+$input-placeholder-color: $gray-100;
+$input-border-color: $gray-800;
+
+// cards
+$card-bg: $gray-700;
+$card-cap-bg: $gray-900;
+$card-border-color: rgba($black, .125);
+
+// Typography
+$body-color: $gray-100;
+$link-decoration: underline;
