@@ -3,10 +3,27 @@
 
 // Color Variables
 // Bootstrap Color Overrides
-$theme-colors: (
-  "primary": #4ED5DE,
+$dark-a: #181818;
+$dark-b: #383838;
+$dark-c: #414141;
+
+$darks: (
+  "a": $dark-a,
+  "b": $dark-b,
+  "c": $dark-c,
 );
-$body-bg: $gray-600;
+
+@each $level, $value in $darks {
+  .bg-dark-#{$level} {
+    background-color: $value !important;
+  }
+}
+
+$theme-colors: (
+  "primary": $gray-200,
+);
+
+$body-bg: $dark-a;
 $border-color: rgba($black, .125);
 $nav-pills-link-active-color: $gray-900;
 
@@ -18,8 +35,8 @@ $input-placeholder-color: $gray-100;
 $input-border-color: $gray-800;
 
 // cards
-$card-bg: $gray-700;
-$card-cap-bg: $gray-900;
+$card-bg: $dark-b;
+$card-cap-bg: $gray-800;
 $card-border-color: rgba($black, .125);
 
 // Typography

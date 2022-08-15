@@ -2,7 +2,7 @@
 function App() {
   
   return (
-    <footer className="sticky-footer bg-dark shadow-lg py-3">
+    <footer className="sticky-footer bg-dark-c shadow-lg py-3">
 			<div className="container my-auto">
 				<div className="text-center my-auto">
 					<small>
