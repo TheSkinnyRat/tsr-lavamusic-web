@@ -13,7 +13,7 @@ function App() {
   return (
     <div id='wrapper'>
       <div style={{minHeight: '90vh'}} />
-      <div id="content-wrapper" className="d-flex flex-column bg-white overflow-hidden">
+      <div id="content-wrapper" className="d-flex flex-column bg-secondary overflow-hidden">
         <div id="content">
           <Navbar />
           <PageHome />

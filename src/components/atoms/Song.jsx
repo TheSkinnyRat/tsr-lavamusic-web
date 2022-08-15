@@ -111,7 +111,7 @@ function App({song, position, setAlert, setSongs, action}) {
         </div>
         <div className="col-9 col-sm-8 my-auto">
           <div className='mt-2 mt-sm-0 font-weight-bold d-block text-truncate'>{song.title}</div>
-          <div className='text-muted text-truncate small'>{song.author} ({convertTime(song.duration)})</div>
+          <div className='text-gray-400 text-truncate small'>{song.author} ({convertTime(song.duration)})</div>
           <Tippy content={<div className='text-center'>Get recommended based on this track</div>} animation='shift-away' arrow={false} maxWidth={150}>
             <button className="btn btn-link btn-sm p-0 m-0 border-0 mr-1" onClick={(e) => getRecommendedSongs(e, song.identifier)} >
               <i className="fa-solid fa-bars-staggered"></i>
