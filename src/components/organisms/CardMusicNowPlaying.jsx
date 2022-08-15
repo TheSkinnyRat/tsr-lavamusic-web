@@ -154,7 +154,7 @@ function App({setAlert}) {
   return (
     <div className="card">
 			<div className="card-body text-center">
-				<p className='font-weight-bold'>Now Playing「 Beta 」</p>
+				<p className='font-weight-bold'>Now Playing</p>
 				<img
 					src={
 						player?.track?.identifier ?

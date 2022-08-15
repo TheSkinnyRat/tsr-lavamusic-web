@@ -4,7 +4,7 @@ import packages from '../../../package.json';
 function App() {
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark-c topbar h-auto container shadow-sm fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-dark topbar h-auto container shadow-sm fixed-top" style={{background: 'rgb(100 100 100 / 60%)', backdropFilter: 'blur(12px)'}}>
 		  <div className="">
 		    <Link className="navbar-brand d-flex mr-auto text-primary text-decoration-none" to="/">
 		      <span className="font-weight-bold mx-1">
